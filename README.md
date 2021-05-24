@@ -1,1 +1,1 @@
-# SA homework including: simple crud, docker, kuber.
+# SA homework including: simple crud (with DB), docker, kuber.

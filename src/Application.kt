@@ -17,9 +17,10 @@ import org.jetbrains.exposed.sql.Database
 
 val dao = RepositoryImpl(Database.connect("jdbc:h2:mem:test;DB_CLOSE_DELAY=-1", driver = "org.h2.Driver"))
 
-fun main() {
-    embeddedServer(Netty, port = 8080){
+fun Application.main() {
         dao.init()
+        install(DefaultHeaders)
+        install(CallLogging)
         install(ContentNegotiation){
             gson {}
         }
@@ -54,7 +55,6 @@ fun main() {
                 }
             }
         }
-    }.start(wait = true)
 }
 
 
